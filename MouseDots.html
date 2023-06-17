@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+ 
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    window.addEventListener('mousemove', (move) => {
+      mouseX = move.clientX;
+      mouseY = move.clientY;
+    });
+
+    function drawDot(x, y) {
+      ctx.beginPath();
+      ctx.arc(x, y, '5', 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+   function updateCanvas() {
+      drawDot(mouseX, mouseY);
+      requestAnimationFrame(updateCanvas);
+    }
+
+    updateCanvas();
+
+
+  </script>
+</body>
+</html>
